@@ -1,4 +1,4 @@
-require "img_fetcher/version"
+require 'img_fetcher/version'
 
 module ImgFetcher
   class Error < StandardError; end
