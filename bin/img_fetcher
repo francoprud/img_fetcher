@@ -3,10 +3,8 @@ require 'img_fetcher'
 require 'optparse'
 
 begin
-  ImgFetcher::CommandLine.new.parse!
-
-# TODO: execute main code
-
+  arguments = ImgFetcher::CommandLine.new.parse!
+  ImgFetcher::Main.new(arguments).run
 # Considered rescuing only these to give a clean feedback for user when using the command line tool
 rescue OptionParser::InvalidOption, OptionParser::MissingArgument,
        ImgFetcher::CommandLine::MissingOptionError => e
@@ -18,5 +16,5 @@ rescue OptionParser::InvalidOption, OptionParser::MissingArgument,
   when OptionParser::MissingArgument
     puts 'img_fetcher: missing arguments on options!'
   end
-  puts "img_fetcher: Type 'img_fetcher --help' for more information."
+  puts 'img_fetcher: Type \'img_fetcher --help\' for more information.'
 end

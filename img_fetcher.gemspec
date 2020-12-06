@@ -29,9 +29,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # Dependencies section
+  ## Runtime
+  spec.add_runtime_dependency 'down', '~> 5.0'
   ## Development & Test
   spec.add_development_dependency 'rake', '~> 12.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rubocop', '~> 1.5.2'
   spec.add_development_dependency 'rubocop-rspec', '~> 2.0.1'
+  spec.add_development_dependency 'webmock', '~> 3.10.0'
 end
