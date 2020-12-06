@@ -16,11 +16,31 @@ RSpec.describe ImgFetcher::CommandLine do
       end
     end
 
-    context 'when missing the required file_path ARG' do
+    context 'when missing the required file_path option' do
       let(:args) { [] }
 
       it 'raises ImgFetcher::CommandLine::MissingOptionError error' do
         expect { command_line.parse! }.to raise_error(ImgFetcher::CommandLine::MissingOptionError)
+      end
+    end
+
+    context 'when missing the directory_output option' do
+      let(:args) { ['-f', 'spec/support/plaintext_files/valid_file.txt'] }
+
+      it 'places a default directory' do
+        expect(command_line.parse!).to eq(
+          { file_path: 'spec/support/plaintext_files/valid_file.txt', output_directory: './' }
+        )
+      end
+    end
+
+    context 'when recieving an invalid Directory for the directory_output option' do
+      let(:args) { ['-f', 'spec/support/plaintext_files/valid_file.txt', '-o', 'invalid_dir'] }
+
+      it 'places a default directory' do
+        expect(command_line.parse!).to eq(
+          { file_path: 'spec/support/plaintext_files/valid_file.txt', output_directory: './' }
+        )
       end
     end
 

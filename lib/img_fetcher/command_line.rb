@@ -1,6 +1,7 @@
 module ImgFetcher
   class CommandLine
     class MissingOptionError < StandardError; end
+    DEFAULT_DIRECTORY = -'./'
 
     def initialize
       @arguments = {}
@@ -49,8 +50,21 @@ module ImgFetcher
 
     def check_required_arguments
       # Check if file_path is present and is a valid system file
-      return if @arguments[:file_path] && File.file?(@arguments[:file_path])
-      raise MissingOptionError
+      raise MissingOptionError unless @arguments[:file_path] && File.file?(@arguments[:file_path])
+      # Build & check output_directory
+      @arguments[:output_directory] = build_and_check_output_directory
+    end
+
+    # Checks that exists, be a valid Directory (or places the default directory),
+    # and appends at the end a slash (/)
+    def build_and_check_output_directory
+      directory = @arguments[:output_directory]
+
+      if directory && Dir.exist?(directory)
+        directory[-1] == '/' ? directory : "#{directory}/"
+      else
+        DEFAULT_DIRECTORY
+      end
     end
   end
 end
