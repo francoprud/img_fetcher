@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+require 'img_fetcher'
+require 'optparse'
+
+begin
+  ImgFetcher::CommandLine.new.parse!
+
+# TODO: execute main code
+
+# Considered rescuing only these to give a clean feedback for user when using the command line tool
+rescue OptionParser::InvalidOption, OptionParser::MissingArgument,
+       ImgFetcher::CommandLine::MissingOptionError => e
+  case e
+  when ImgFetcher::CommandLine::MissingOptionError
+    puts 'img_fetcher: missing required option!'
+  when OptionParser::InvalidOption
+    puts 'img_fetcher: invalid options!'
+  when OptionParser::MissingArgument
+    puts 'img_fetcher: missing arguments on options!'
+  end
+  puts "img_fetcher: Type 'img_fetcher --help' for more information."
+end

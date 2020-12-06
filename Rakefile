@@ -1,6 +1,22 @@
-require 'bundler/gem_tasks'
-require 'rspec/core/rake_task'
+require 'img_fetcher/version'
 
-RSpec::Core::RakeTask.new(:spec)
+GEM_NAME    = -'img_fetcher'
+GEM_VERSION = ImgFetcher::VERSION
 
-task default: :spec
+task default: :build
+
+task :build do
+  system "gem build #{GEM_NAME}.gemspec"
+end
+
+task install: :build do
+  system "gem install #{GEM_NAME}-#{GEM_VERSION}.gem"
+end
+
+task publish: :build do
+  system "gem push #{GEM_NAME}-#{GEM_VERSION}.gem"
+end
+
+task :clean do
+  system 'rm *.gem'
+end
