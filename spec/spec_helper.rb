@@ -12,4 +12,11 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.after(:suite) do
+    Dir.foreach('spec/support/tmp') do |f|
+      fn = File.join('spec/support/tmp', f)
+      File.delete(fn) if f != '.' && f != '..'
+    end
+  end
 end
