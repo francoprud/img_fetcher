@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start # must be issued before any of the application code is required.
 require 'bundler/setup'
 require 'webmock/rspec'
 require 'img_fetcher'
