@@ -27,6 +27,17 @@ Or, you can clone this repository and build and install the gem by yourself:
 ```
     $ bundle exec rake install
 ```
+
+### For development
+
+Temporary folders must be created in order to run the tests, so you must run the following bash command to setup the development environment:
+
+```
+    $ ./bin/setup
+```
+
+This will run `bundle install`, and create `tmp/` and `spec/support/tmp/` directories.
+
 ## Usage
 
 After installing the gem, you will be able to run the script with the command line.

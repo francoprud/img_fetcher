@@ -19,6 +19,8 @@ module ImgFetcher
       @terminal.print_general_status(@stats) if @arguments[:verbose]
     end
 
+    private
+
     def download(line, index)
       temp_file = URL.download(line)
       if temp_file && Helpers::File.save(temp_file, @arguments[:output_directory])

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+IFS=$'\n\t'
+set -vx
+
+# Set up Ruby dependencies
+bundle install
+
+# Create folders required by specs
+if ! [[ -d tmp ]]
+then
+  mkdir tmp
+fi
+
+if ! [[ -d spec/support/tmp ]]
+then
+  mkdir spec/support/tmp
+fi
