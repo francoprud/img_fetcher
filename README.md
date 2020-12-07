@@ -53,9 +53,14 @@ Usage: img_fetcher -f <file_path> [options...]
     -o, --output OUTPUT_DIRECTORY    Specify the output directory
     -V, --version                    Show version number and quit
     -v, --verbose                    Make the operation more talkative
+    -t, --threaded                   Run the command with multiple threads
 ```
 
 Regarding the `OUTPUT_DIRECTORY`, folder MUST exist. In case it doesn't, files will be stored in the current directory (`./`).
+
+### Threaded option
+
+Regarding the `--threaded` option, it's a basic ruby thread usage. Further improvements will be to limit the amount of threads with a pool of threads. Only the `ImgFetcher::Stats` class is synchronized with a Mutex. I don't really know if `puts` must be synchronized given that it's constantly accessing to stdout.
 
 ## Output
 
@@ -76,7 +81,7 @@ For this case, we limit the **maximum number of redirects to 0** and **there's n
 ## Possible improvements
 
 1. If URLs are repeated along the file, don't fetch them again.
-2. Using threads for concurrency.
+2. Creating a pool of threads for further customization.
 
 ## Contributing
 
