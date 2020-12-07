@@ -14,6 +14,7 @@ module ImgFetcher
 
       def self.print_general_status(stats)
         puts "\nRetrieved #{stats.retrieved_images} image(s) from a total of #{stats.total_lines}."
+        puts "Total time: #{stats.total_time}."
       end
     end
   end

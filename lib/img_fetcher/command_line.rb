@@ -23,6 +23,7 @@ module ImgFetcher
       output_directory_option
       version_option
       verbose_option
+      threaded_option
     end
 
     def file_path_option
@@ -52,6 +53,12 @@ module ImgFetcher
     def verbose_option
       @options.on('-v', '--verbose', 'Make the operation more talkative') do
         @arguments[:verbose] = true
+      end
+    end
+
+    def threaded_option
+      @options.on('-t', '--threaded', 'Run the command with multiple threads') do
+        @arguments[:threaded] = true
       end
     end
 
