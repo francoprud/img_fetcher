@@ -1,0 +1,25 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2 
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.7.2
+    executor: ruby/default
+    steps:
+      - checkout
+      - run:
+          name: Create folders for specs
+          command: mkdir tmp && mkdir spec/support/tmp
+      - run:
+          name: Install bundle
+          command: bundle install
+      - run:
+          name: Run rubocop
+          command: bundle exec rubocop --format simple
+      - run:
+          name: Run tests
+          command: bundle exec rspec spec
+      - store_artifacts:
+          path: coverage
