@@ -1,5 +1,6 @@
 # ImgFetcher
 
+[![Gem Version](https://badge.fury.io/rb/img_fetcher.svg)](https://badge.fury.io/rb/img_fetcher)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop-hq/rubocop)
 [![francoprud](https://circleci.com/gh/francoprud/img_fetcher.svg?style=shield)](https://github.com/francoprud/img_fetcher)
 
