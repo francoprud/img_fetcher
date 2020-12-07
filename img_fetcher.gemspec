@@ -1,5 +1,6 @@
 require_relative 'lib/img_fetcher/version'
 
+# rubocop:disable Metrics/BlockLength
 Gem::Specification.new do |spec|
   spec.name          = 'img_fetcher'
   spec.version       = ImgFetcher::VERSION
@@ -39,3 +40,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', '~> 0.20.0'
   spec.add_development_dependency 'webmock', '~> 3.10.0'
 end
+# rubocop:enable Metrics/BlockLength
