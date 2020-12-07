@@ -55,6 +55,8 @@ Usage: img_fetcher -f <file_path> [options...]
     -v, --verbose                    Make the operation more talkative
 ```
 
+Regarding the `OUTPUT_DIRECTORY`, folder MUST exist. In case it doesn't, files will be stored in the current directory (`./`).
+
 ## Output
 
 If `--verbose` option is selected, then the output of the command will be shown at the terminal with the following structure:

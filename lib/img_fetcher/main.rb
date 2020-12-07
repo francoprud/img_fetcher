@@ -13,7 +13,7 @@ module ImgFetcher
 
       File.open(@arguments[:file_path], 'r').each_with_index do |line, index|
         @stats.add_line
-        download(line, index)
+        download(line, index + 1)
       end
 
       @terminal.print_general_status(@stats) if @arguments[:verbose]

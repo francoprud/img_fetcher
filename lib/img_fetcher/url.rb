@@ -12,7 +12,7 @@ module ImgFetcher
     # We can notice that we could have one the following: Down::TooLarge, Down::InvalidUrl,
     # Down::TooManyRedirects, Down::ResponseError, Down::ClientError, Down::NotFound,
     # Down::ServerError, Down::ConnectionError, Down::TimeoutError, Down::SSLError.
-    rescue Down::Error
+    rescue Down::Error, Addressable::URI::InvalidURIError
       nil
     end
   end
