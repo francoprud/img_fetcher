@@ -10,7 +10,7 @@ RSpec.describe ImgFetcher::Main do
     end
 
     context 'when input file contains valid URLs' do
-      it 'increments the files in the given directory' do
+      it 'increments the files in the given directory, skipping invalid URLs' do
         stub_request(:get, 'https://onaliternote.files.wordpress.com/2016/11/wp-1480230666843.jpg')
           .with(headers: { 'Accept' => '*/*' }).to_return(
             status: 200, body: 'body', headers: { 'Content-Type' => 'image/jpeg' }

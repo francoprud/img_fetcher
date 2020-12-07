@@ -22,6 +22,7 @@ module ImgFetcher
       file_path_option
       output_directory_option
       version_option
+      verbose_option
     end
 
     def file_path_option
@@ -45,6 +46,12 @@ module ImgFetcher
       @options.on('-V', '--version', 'Show version number and quit') do
         puts ImgFetcher::VERSION
         exit
+      end
+    end
+
+    def verbose_option
+      @options.on('-v', '--verbose', 'Make the operation more talkative') do
+        @arguments[:verbose] = true
       end
     end
 
